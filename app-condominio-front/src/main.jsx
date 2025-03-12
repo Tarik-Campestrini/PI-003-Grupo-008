@@ -1,10 +1,14 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
-import Index from './pages/Index'
+import GlobalStyle from './styles/global'
+import RoutesApp from './routes'
+import { AuthProvider } from './contexts/auth';   
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Index />
-  </StrictMode>,
+  
+  <AuthProvider>
+    <RoutesApp />
+    <GlobalStyle />
+  </AuthProvider>
+ 
 )
