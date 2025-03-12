@@ -1,12 +1,13 @@
 import  {BrowserRouter, Route, Routes}  from "react-router-dom";
 import Index from "../pages/Index";
 import Home from "../pages/Home";
+import useAuth from "../hooks/useAuth";
 
 import { Fragment } from "react";
 
 // eslint-disable-next-line no-unused-vars
 const Private = ({Item}) => {
-  const index = true;
+  const index = useAuth;
   return index > 0 ? <Item /> : <Index />
 }
 
