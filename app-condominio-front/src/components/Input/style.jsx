@@ -1,6 +1,6 @@
-import styled from "styled-componets";
+import styled from "styled-components";
 
-export const Input = styled.imput`
+export const Input = styled.input`
   outline: none;
   padding: 16px 20px;
   widht: 100%

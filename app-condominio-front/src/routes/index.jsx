@@ -1,6 +1,7 @@
 import  {BrowserRouter, Route, Routes}  from "react-router-dom";
 import Index from "../pages/Index";
 import Home from "../pages/Home";
+import Cadastrar from "../pages/cadastrar";
 import useAuth from "../hooks/useAuth";
 
 import { Fragment } from "react";
@@ -17,7 +18,8 @@ const RoutesApp = () => {
       <Fragment>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/home" element={<Private Item={Home} />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/cadastrar" element={<Cadastrar />} />
          
         </Routes>
       </Fragment>
