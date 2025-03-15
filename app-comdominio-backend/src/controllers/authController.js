@@ -28,17 +28,16 @@ export const register = async (req, res) => {
   }
 };
 
-
-// Busca o usuário no banco pelo e-mail
-const user = await User.findOne({ email });
-if (!user) {
-  return res.status(404).json({ message: "Usuário não encontrado!" });
-}
-
 // Função para realizar o login
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    // Busca o usuário no banco pelo e-mail
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "Usuário não encontrado!"});
+    }
 
     // Compara a senha digitada com a senha salva no banco de dados
     const isPasswordValid = await bcrypt.compare(password, user.password);
