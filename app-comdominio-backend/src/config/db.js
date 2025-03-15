@@ -1,13 +1,19 @@
-/* eslint-disable no-undef */
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-export default async function conect() {
+dotenv.config();
 
+const connectDB = async () => {
   try {
-    
-    mongoose.connect(process.env.MONGO);
+    await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log("MongoDB conectado com sucesso!");
   } catch (error) {
-    throw new Error(error);
+    console.error("Erro ao conectar ao MongoDB:", error);
+    process.exit(1);
   }
+};
 
-}
+export default connectDB;
