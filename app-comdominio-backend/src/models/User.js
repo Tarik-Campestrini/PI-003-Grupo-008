@@ -1,26 +1,18 @@
-import mongoose from "mongoose";
-import mongooseSequence from "mongoose-sequence";
+// Faz a importação das bibliotecas
+import mongoose from "mongoose"; 
 
-const AutoIncrement = mongooseSequence(mongoose);
+// Define o esquema do usuário na tabela do BD
+const userSchema = new mongoose.Schema({
+  nome: { type: String, required: true }, 
+  email: { type: String, required: true, unique: true }, 
+  password: { type: String, required: true }, 
+  bloco: { type: String, required: true }, 
+  apartamento: {type: String, required: true}, 
+  telefone: {type: String, required: true} 
+});
 
-const { Schema } = mongoose;
-
-const userSchema = new Schema(
-  {
-    id: { type: Number, unique: true }, // ID auto-incrementável
-    nome: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    bloco: { type: String, required: true },
-    apartamento: { type: String, required: true },
-    telefone: { type: String, required: true },
-  },
-  { timestamps: true }
-);
-
-// Aplicando o auto-incremento no campo "id"
-userSchema.plugin(AutoIncrement, { inc_field: "id" });
-
+// Cria um modelo de usuário baseado no esquema do BD
 const User = mongoose.model("User", userSchema);
 
-export default User;
+// Exporta o modelo para ser utilizado 
+export default User; 
