@@ -2,14 +2,15 @@ import express from "express";
 import cors from "cors";
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
-import User from "./src/models/User.js"; // Ajuste o caminho conforme necessário
+import User from "./src/models/User.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json()); // Para processar JSON no corpo da requisição
 
 // Conectar ao MongoDB
-mongoose.connect("mongodb://localhost:27017/app-condominio", {
+mongoose.connect("mongodb+srv://root:root2023@app-condominio.az6qe.mongodb.net/app_condominio?retryWrites=true&w=majority&appName=app-condominio"
+, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
