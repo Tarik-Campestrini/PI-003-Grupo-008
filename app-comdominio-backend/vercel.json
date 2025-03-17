@@ -8,8 +8,8 @@
   ],
   "routes": [
     {
-      "src": "app-comdominio-backend/src/(.*)",
-      "dest": "app-comdominio-backend/server.js"
+      "src": "/(.*)",
+      "dest": "server.js"
     }
   ]
 

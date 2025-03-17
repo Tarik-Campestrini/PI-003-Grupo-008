@@ -39,7 +39,7 @@ export default function Register() {
   async function handleSubmit(values, { resetForm }) {
     setFormSubmitting(true);
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -109,7 +109,7 @@ export default function Register() {
             {/* Botão de inscrição */}
             <Button
               type="submit"
-              Text={isSubmitting ? "Carregando..." : "Inscrever-se"} // Corrigido "text" para "Text"
+              Text={isSubmitting ? "Carregando..." : "Inscrever-se"} 
               disabled={isSubmitting}
               className="bg-blue-500 text-white rounded p-2 cursor-pointer"
             />

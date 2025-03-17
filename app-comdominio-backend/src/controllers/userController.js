@@ -22,13 +22,13 @@ export const updateUser = async (req, res) => {
   try {
 
     // Pega a informações do usuario no Frontend
-    const { id } = req.params;
+    const { userId } = req.params;
     const { nome, email, telefone, bloco, apartamento } = req.body;
 
     // Faz a atualização do usuario no Banco de Dados
     const user = await User.findByIdAndUpdate(
-      id,
-      { nome, email, telefone, bloco, apartamento },
+      userId,
+      { userId, nome, email, telefone, bloco, apartamento },
       { new: true }
     );
 
@@ -52,8 +52,8 @@ export const deleteUser = async (req, res) => {
   try {
 
     // Pega a informações do usuario no Frontend
-    const { id } = req.params;
-    const user = await User.findById(id);
+    const { userId } = req.params;
+    const user = await User.findById(userId);
     
     if (!user) {
       // Retorna um erro 404 caso não encontre o usuario
@@ -61,7 +61,7 @@ export const deleteUser = async (req, res) => {
     }
 
     // Deleta usuario do Banco de dados
-    await User.findByIdAndDelete(id);
+    await User.findByIdAndDelete(userId);
     res.json({ message: "Usuário deletado com sucesso!" });
   } catch (error) {
     // Retorna um erro caso não delete o usuario

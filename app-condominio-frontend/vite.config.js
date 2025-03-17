@@ -8,13 +8,21 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5000/api/auth/register", // Altere para a porta do backend, se necessário
+        target: "http://localhost:3000/",
         changeOrigin: true,
         secure: false,
+        rewrite: (path) => path.replace(/^\/api/, "/api"),
+
       },
     },
   },
